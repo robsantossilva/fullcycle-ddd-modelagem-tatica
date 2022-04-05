@@ -8,6 +8,7 @@ describe("Customer repository test", () => {
   let sequelize: Sequelize;
 
   beforeEach(async () => {
+    jest.setTimeout(10000);
     sequelize = new Sequelize({
       dialect: "sqlite",
       storage: ":memory:",

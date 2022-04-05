@@ -43,3 +43,31 @@ Vernon, Vaughn. Implementing DDD
 
 Esses objetos semelhantes a coleções são sobre persistências. Todo tipo Agregado persistente terá um Repositório. De um modo geral, existe uma relação um-para-um entre tipo Agregado e um Repositório.
 Vernon, Vaughn. Implementing DDD
+
+## Domain Events
+"Use um evento de domínio para capturar uma ocorrência de algo que aconteceu no domínio."
+Vernon Vaughn. Implementing DDD
+
+"A essência de um evento de domínio é que você o usa para capturar coisas que podem desencadear uma mudança no estado do aplicativo que você está desenvolvendo. Esses objetos de eventos são processados para causar alterações no sistema e armazenados para fornecer um AuditLog."
+Fowler, Martin. Domain Event
+
+Todo evento deve ser representado em uma ação realizada no passado:
+- UserCreated
+- OrderPlaced
+- EmailSent
+
+Quando utilizar
+Normalmente um Domain Event deve ser utilizado quando queremos notificar outros Bounded Contexts de uma mudança de estado.
+
+#### Componentes
+- Event
+- Handler: Executa o processamento quando um evento é chamado
+- Event Dispatcher: Responsável por armazenar e executar os handlers de um evento quando ele for disparado
+
+#### Dinâmica
+- Criar um "Event Dispatcher"
+- Criar um "Evento"
+- Criar um "Handler" para o "Evento"
+- Registrar o Evento, juntamente com o Handler no "Event DIspatcher"
+
+Agora para disparar um evento, basta executar o método "notify" do "Event Dispatcher". Nesse momento todos os Handlers registrados no evento serão executados.
