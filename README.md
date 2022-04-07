@@ -71,3 +71,34 @@ Normalmente um Domain Event deve ser utilizado quando queremos notificar outros 
 - Registrar o Evento, juntamente com o Handler no "Event DIspatcher"
 
 Agora para disparar um evento, basta executar o método "notify" do "Event Dispatcher". Nesse momento todos os Handlers registrados no evento serão executados.
+
+___
+
+## Módulos
+Em um contexto DDD, módulos em seu modelo serverm como **containeres** nomeados para classes de objetos de dominio que são altamente coesos entre si.
+O objetivo deve ser baixo acoplamento entre as classes que estão em módulos diferentes.
+Como os Módulos usados no DDD não são compartimentos de armazenamento anêmicos ou genéricos, também é importante nomear adequadamente os Módulos.
+Vernon, Vaughn
+
+- Módulos devem respeitar a linguagem Universal/Ubiqua
+- Baixo acoplamento
+- Um ou mais agregados devem estar juntos somente se fiser sentido
+- Organizaçao pelo domínio/subdomínio e não pelo tipo de objetos
+- Devem respeitar a mesma divisão quando estão em camadas diferentes
+
+## Factories
+Desloque a responsabilidade de criar instancias de objetos complexos e AGREGADOS para um objeto separado, que pode não ter responsabilidade no modelo de dominio, mas ainda faz parte do design do dominio.
+Forneça uma interface que encapsula toda a criação complexa e que não exija que o cliente faça referencia às classes concretas dos objetos que estão sendo instanciados.
+Crie AGGREGATES inteiros de uma única vez, reforçando suas invariantes.
+Evans, Eric. DDD
+
+**Client** ---new(params)---> **FACTORY** ---create---> **product**
+**Client** <---product--- **FACTORY**
+
+# Dicas finais
+- Pense no coração do software
+- Deixe para depois as complexidades acidentais (Banco de Dados, Cache, Email, Framework, API/CMD, GRPC)
+- Sempre comece pelo dominio/Regras de Negócio
+- Evite criar entidades e agregados anemicos
+- Não misture entidades do ORM com entidades de dominio
+- 
